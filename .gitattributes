@@ -1,0 +1,8 @@
+# for most anything "texty", check out with the local line endings
+* text=auto
+
+# for Unix shell scripts, check out with LFs, even on Windows
+*.sh text eol=lf
+
+# for Windows batch scripts, check out with CRLFs, even on Unix
+*.bat text eol=crlf
