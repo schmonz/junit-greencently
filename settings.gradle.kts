@@ -1,1 +1,1 @@
-rootProject.name = "junit5-whenalltestsweregreen"
+rootProject.name = "junit-whenalltestsweregreen"
