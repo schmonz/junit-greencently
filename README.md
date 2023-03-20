@@ -9,19 +9,19 @@ Optimize your commit flow. Run your tests once and only once with When All Tests
 ## How to use
 
 1. `./gradlew build`
-2. Add the resulting `.jar` to your classpath
+2. Add the resulting `.jar` to your project's classpath
 3. Add something like this to your `build.gradle`:
-
 ```groovy
 test {
     systemProperty("junit.jupiter.extensions.autodetection.enabled", true)
 }
 ```
-
 Or if you have a `build.gradle.kts` instead:
-
 ```kotlin
 tasks.withType<Test> {
     jvmArgs("-Djunit.jupiter.extensions.autodetection.enabled=true")
 }
 ```
+4. Run all your tests greenly
+5. Note that a file appears in your build directory
+6. Check the file's modification time in your pre-commit hook
