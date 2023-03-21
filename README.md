@@ -31,3 +31,5 @@ tasks.withType<Test> {
 Gradle has a build cache. If you run `./gradlew test` all green and then run it again without having changed anything, it knows not to run the tests again. This has benefits: no additional logic needed in your pre-commit hook, and no time window for changing what's being committed.
 
 IntelliJ can use Gradle to run tests, in which case the Gradle build cache is your friend. But this can be much slower than the IntelliJ test runner, and avoidable slowness is what we're trying to avoid.
+
+If your JUnit is configured to generate reports, you could try to determine from the content of a report whether that all possible tests ran and all of them were green, and if so, check the file's timestamp.
