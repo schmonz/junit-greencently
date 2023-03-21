@@ -25,3 +25,9 @@ tasks.withType<Test> {
 4. Run all your tests greenly
 5. Note that a file appears in your build directory
 6. Check the file's modification time in your pre-commit hook
+
+## Alternatives
+
+Gradle has a build cache. If you run `./gradlew test` all green and then run it again without having changed anything, it knows not to run the tests again. This has benefits: no additional logic needed in your pre-commit hook, and no time window for changing what's being committed.
+
+IntelliJ can use Gradle to run tests, in which case the Gradle build cache is your friend. But this can be much slower than the IntelliJ test runner, and avoidable slowness is what we're trying to avoid.
