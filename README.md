@@ -42,7 +42,7 @@ Gradle has a build cache. If you run `./gradlew test` all green and then run it 
 
 IntelliJ can use Gradle to run tests, in which case the Gradle build cache is your friend. But this is often much slower than IntelliJ's internal test runner, and avoidable slowness is precisely what we're trying to avoid.
 
-A clever IntelliJ Run Configuration can do the trick, via @rradczewski:
+A clever IntelliJ Run Configuration can do the trick, via [@rradczewski](https://github.com/rradczewski):
 
 1. Create a Shell Script configuration "Clever Test Task"
 2. Execute script text `touch when-all-tests-were-green`
