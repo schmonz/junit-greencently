@@ -36,7 +36,7 @@ Abstractly, the algorithm is a sequence of guard clauses:
 
 Concretely, this implementation accomplishes (1) and (2) via JUnit callbacks and (3) via the filesystem, with conditional logic implemented by some other program.
 
-Other implementations exist:
+### Other implementations
 
 Gradle has a build cache. If you run `./gradlew test` all green and then run it again without having changed anything, it knows not to run the tests again. Benefits: no additional pre-commit logic, no time window for changing what's being committed.
 
@@ -51,7 +51,7 @@ A clever IntelliJ Run Configuration can do the trick, via [@rradczewski](https:/
 
 If and only if the "Before launch" task succeeds, the shell script will run.
 
-Still other implementations can be imagined:
+### Additional possibilities
 
 IntelliJ has Run -> Test History, but the on-disk representation is not updated anywhere near real time. If it did, the following command would approximately get you to the next problem, which is deducing all-green or not from the results:
 
