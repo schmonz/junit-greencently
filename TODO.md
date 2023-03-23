@@ -17,8 +17,9 @@
 
 ## Correctness
 
-- Get rid of `var`s and `null`s wherever possible
-- Ask the running JUnit for paths, rather than guessing
+- If IntelliJ writes to one location and `./gradlew` writes to another... 
+  how about we just write the top-level directory and document adding it to `.gitignore`?
+- Gradle with `maxParallelForks > 1`: we have to add together the green tests from each of the Test Executors
 - Stop generating console output
 
 

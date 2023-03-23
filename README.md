@@ -8,28 +8,36 @@ Optimize your commit flow. Run your tests once and only once with When All Tests
 
 ## How to use
 
-1. `./gradlew build`
-2. Add this to your `build.gradle`:
+1. Add this to your `build.gradle`:
+
 ```groovy
 dependencies {
-    testImplementation files('../junit-whenalltestsweregreen/build/libs/junit-whenalltestsweregreen-1.0-SNAPSHOT.jar')
+  testImplementation files('../junit-whenalltestsweregreen/build/libs/junit-whenalltestsweregreen-1.0-SNAPSHOT.jar')
 }
 test {
-    systemProperty("junit.jupiter.extensions.autodetection.enabled", true)
+  systemProperty("junit.jupiter.extensions.autodetection.enabled", true)
+  maxParallelForks = 1
 }
 ```
+
 ...or `build.gradle.kts`:
+
 ```kotlin
 dependencies {
     testImplementation(files("../junit-whenalltestsweregreen/build/libs/junit-whenalltestsweregreen-1.0-SNAPSHOT.jar"))
 }
 tasks.withType<Test> {
     jvmArgs("-Djunit.jupiter.extensions.autodetection.enabled=true")
+    maxParallelForks = 1
 }
 ```
+
+2. Add this line to your `.gitignore`: `junit5-when-all-tests-were-green`
 3. Run all your tests greenly
-4. Note that a file appears in your build directory
-5. Check the file's modification time in your pre-commit hook
+4. Watch `junit5-when-all-tests-were-green` appear at the top level of your repo (while _not_ appearing in `git status`)
+5. Check its modification time in your pre-commit hook
+
+Once we know how to add together the green tests from each of Gradle's Test Executors, we won't need to have an opinion about `maxParallelForks`.
 
 ## Alternatives
 
