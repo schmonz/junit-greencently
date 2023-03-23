@@ -2,7 +2,13 @@
 
 ## Correctness
 
-- Handle Gradle with parallel Test Executors
+- What are dynamic tests? Am I counting them the same as JUnit?
+- Running sample project tests depends on having built main project's `.jar`
+- Running main project tests depends on sample project tests being compiled and green
+- Set up Detekt and other good checks
+- Treat warnings as build errors
+- Be able to accumulate results from Gradle with parallel Test Executors
+- Be able to run our own tests in parallel (requires unique-per-test names for the timestamp file)
 
 ## Usability
 
@@ -13,9 +19,16 @@
   Say, because it winds up getting shipped in a `.jar` by mistake?
 - How can a project configure a different location for the file?
 
+## Completeness
+
+- JUnit 4
+- TestNG
+- Maven
+- IntelliJ
+- Eclipse
+- Jest
+- ?
+
 ## Organization
 
-- One repo per impl, or one repo holding all of them?
-- Specifically, wanna ship IntelliJ plugin too
-- Adding an Eclipse plugin would help clarify the interface and the build
-- My current TypeScript project needs a test-runner plugin too
+- A repo per impl, or all of them in one big repo?

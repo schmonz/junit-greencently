@@ -14,6 +14,7 @@ repositories {
 dependencies {
     implementation("org.junit.platform:junit-platform-launcher:1.9.2")
     testImplementation(kotlin("test"))
+    testRuntimeOnly(files("sample-projects/junit5-gradle/build/classes/kotlin/test"))
 }
 
 tasks.withType<Test> {

@@ -1,3 +1,5 @@
+package com.schmonz.whenalltestsweregreen.sample.junit5gradle
+
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test

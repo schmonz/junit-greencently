@@ -40,3 +40,7 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+### When All Tests Were Green
+*when-all-tests-were-green
+YouNeverSawMe.kt
