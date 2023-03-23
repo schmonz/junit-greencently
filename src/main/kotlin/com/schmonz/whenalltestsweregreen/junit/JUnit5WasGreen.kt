@@ -31,9 +31,9 @@ class JUnit5WasGreen : TestExecutionListener {
         if (anyTestsRed || !anyTestsGreen) return
 
         val expected = countTests(discoverAllTests(whereToLookForTests()))
-        val actualCount = countTests(testPlan)
+        val actual = countTests(testPlan)
 
-        if (actualCount == expected) {
+        if (actual == expected) {
             updateTimestamp(whereToWriteTimestamp())
         }
     }
