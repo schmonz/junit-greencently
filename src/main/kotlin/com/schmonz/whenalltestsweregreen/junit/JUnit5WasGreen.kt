@@ -17,10 +17,6 @@ class JUnit5WasGreen : TestExecutionListener {
     private var anyTestsRed = false
     private var anyTestsGreen = false
 
-    private fun DEBUGGING(message: String) {
-        System.err.println("SCHMONZ: $message")
-    }
-
     override fun executionFinished(testIdentifier: TestIdentifier?, testExecutionResult: TestExecutionResult?) {
         super.executionFinished(testIdentifier, testExecutionResult)
         if (testExecutionResult!!.status == TestExecutionResult.Status.SUCCESSFUL) {
@@ -39,8 +35,6 @@ class JUnit5WasGreen : TestExecutionListener {
 
         if (actualCount == expected) {
             updateTimestamp(whereToWriteTimestamp())
-        } else {
-            DEBUGGING("expected $expected, was $actualCount")
         }
     }
 
@@ -80,6 +74,5 @@ class JUnit5WasGreen : TestExecutionListener {
         if (!filepath.toFile().createNewFile()) {
             filepath.setLastModifiedTime(FileTime.from(Instant.now()))
         }
-        DEBUGGING("updated $filepath")
     }
 }

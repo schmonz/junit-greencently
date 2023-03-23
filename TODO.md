@@ -1,27 +1,17 @@
 # Before release
 
+## Correctness
 
-## Filenames
-
-- Is it potentially annoying to put a file in the build directory? Say, because it winds up getting shipped in someone's .jar by mistake?
-- How can the project configure a different file location?
-- Should I prefix the filename with `junit-` so the IntelliJ plugin would have a distinct timestamp file?
-
+- Handle Gradle with parallel Test Executors
 
 ## Usability
 
 - Is it obvious _when_ to add this to your project?
 - Is it obvious _how_ to add this to your project?
 - Is it easy to tell whether a typical run-tests-and-then-commit got faster?
-
-
-## Correctness
-
-- If IntelliJ writes to one location and `./gradlew` writes to another... 
-  how about we just write the top-level directory and document adding it to `.gitignore`?
-- Gradle with `maxParallelForks > 1`: we have to add together the green tests from each of the Test Executors
-- Stop generating console output
-
+- Is it potentially annoying to put a file in the build directory?
+  Say, because it winds up getting shipped in a `.jar` by mistake?
+- How can a project configure a different location for the file?
 
 ## Organization
 
