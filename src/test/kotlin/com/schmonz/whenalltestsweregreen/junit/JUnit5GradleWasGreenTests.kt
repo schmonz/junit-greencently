@@ -113,7 +113,9 @@ class JUnit5GradleWasGreenTests {
         """.trimIndent()
         val ephemeralTestFile = File(
             System.getProperty("user.dir"),
-            "${SAMPLE_PROJECT_ROOT}/src/test/kotlin/com/schmonz/whenalltestsweregreen/sample/junit5gradle/YouNeverSawMe.kt"
+            "${SAMPLE_PROJECT_ROOT}/src/test/kotlin" +
+                    "/com/schmonz/whenalltestsweregreen" +
+                    "/sample/junit5gradle/YouNeverSawMe.kt"
         )
         ephemeralTestFile.writer().write(contentsOfEphemeralTestFile)
         `build the tests`()

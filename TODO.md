@@ -5,7 +5,6 @@
 - What are dynamic tests? Am I counting them the same as JUnit?
 - Running sample project tests depends on having built main project's `.jar`
 - Running main project tests depends on sample project tests being compiled and green
-- Set up Detekt and other good checks
 - Treat warnings as build errors
 - Be able to accumulate results from Gradle with parallel Test Executors
 - Be able to run our own tests in parallel (requires unique-per-test names for the timestamp file)

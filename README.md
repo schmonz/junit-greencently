@@ -8,20 +8,7 @@ Optimize your commit flow. Run your tests once and only once with When All Tests
 
 ## How to use
 
-1. Add this to your `build.gradle`:
-
-```groovy
-dependencies {
-  testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-  testRuntimeOnly files('../junit-whenalltestsweregreen/build/libs/junit-whenalltestsweregreen-1.0-SNAPSHOT.jar')
-}
-test {
-  systemProperty("junit.jupiter.extensions.autodetection.enabled", true)
-  maxParallelForks = 1
-}
-```
-
-...or `build.gradle.kts`:
+1. Add this to your `build.gradle.kts`:
 
 ```kotlin
 dependencies {
@@ -31,6 +18,19 @@ dependencies {
 tasks.withType<Test> {
     jvmArgs("-Djunit.jupiter.extensions.autodetection.enabled=true")
     maxParallelForks = 1
+}
+```
+
+...or `build.gradle`:
+
+```groovy
+dependencies {
+  testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+  testRuntimeOnly files('../junit-whenalltestsweregreen/build/libs/junit-whenalltestsweregreen-1.0-SNAPSHOT.jar')
+}
+test {
+  systemProperty("junit.jupiter.extensions.autodetection.enabled", true)
+  maxParallelForks = 1
 }
 ```
 
