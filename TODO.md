@@ -11,6 +11,7 @@
 
 ## Usability
 
+- What do we mean by "all tests", exactly?
 - Is it obvious _when_ to add this to your project?
 - Is it obvious _how_ to add this to your project?
 - Is it easy to tell whether a typical run-tests-and-then-commit got faster?
@@ -25,6 +26,7 @@
 - Maven
 - IntelliJ
 - Eclipse
+- VSCode
 - Jest
 - ?
 
