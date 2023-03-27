@@ -34,7 +34,7 @@ test {
 }
 ```
 
-2. Add this line to your `.gitignore`: `junit5-when-all-tests-were-green`
+2. Add this line to your `.gitignore`: `*when-all-tests-were-green`
 3. Run all your tests greenly
 4. Watch `junit5-when-all-tests-were-green` appear at the top level of your repo (while _not_ appearing in `git status`)
 5. Check its modification time in your pre-commit hook
