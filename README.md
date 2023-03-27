@@ -45,9 +45,9 @@ Once we know how to add together the green tests from each of Gradle's Test Exec
 
 Abstractly, the algorithm is a sequence of guard clauses:
 
-1. Do nothing if the tests that just ran were not all green
-2. Do nothing if they were not all the tests that could possibly have been run
-3. Do nothing if we're about to _unnecessarily_ run all possible tests again
+1. Do nothing new if the tests that just ran were not all green
+2. Do nothing new if they were not all the tests that could possibly have been run
+3. Do nothing (this is new) if we're about to _unnecessarily_ run all possible tests again
 
 Concretely, this implementation accomplishes (1) and (2) via JUnit callbacks and (3) by making it possible for an external program to decide.
 
