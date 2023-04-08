@@ -37,8 +37,8 @@ class JUnit5Listener : TestExecutionListener {
                     ),
                 JUnit5Summary(
                         JUnit5Planner(null).prepareTestPlan(),
-                        false,
-                        false
+                        anyTestsRed = false,
+                        anyTestsGreen = false
                     )
             ).isTotal()
         ) {
