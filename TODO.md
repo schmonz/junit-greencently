@@ -2,6 +2,7 @@
 
 ## Correctness
 
+- Add automated tests
 - What are dynamic tests? Am I counting them the same as JUnit?
 - Running sample project tests depends on having built main project's `.jar`
 - Running main project tests depends on sample project tests being compiled and green
@@ -17,7 +18,7 @@
 - Is it easy to tell whether a typical run-tests-and-then-commit got faster?
 - Is it potentially annoying to put a file in the build directory?
   Say, because it winds up getting shipped in a `.jar` by mistake?
-- How can a project configure a different location for the file?
+- How can a project override where the timestamp file goes?
 
 ## Completeness
 
@@ -32,4 +33,5 @@
 
 ## Organization
 
-- A repo per impl, or all of them in one big repo?
+- Each impl in its own repo, or one big repo with all of them?
+- Each impl ships its own `.jar`, or one big `.jar` with all of them?

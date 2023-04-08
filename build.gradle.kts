@@ -3,7 +3,7 @@ import io.gitlab.arturbosch.detekt.Detekt
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.8.10"
+    kotlin("jvm") version "1.8.20"
     id("java-library")
     id("jacoco")
     id("com.github.ben-manes.versions") version "0.46.0"
@@ -11,23 +11,21 @@ plugins {
 }
 
 group = "com.schmonz.whenalltestsweregreen"
-version = "1.0-SNAPSHOT"
+version = "0.1-SNAPSHOT"
 
-val jvmVersion = JavaLanguageVersion.of(8)
+kotlin {
+    jvmToolchain(8)
+}
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
+    // JUnit 5 test discovery
     implementation("org.junit.platform:junit-platform-launcher:1.9.2")
-    testImplementation(kotlin("test"))
-    testRuntimeOnly(files("sample-projects/junit5-gradle/build/classes/kotlin/test"))
-    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.22.0")
-}
 
-kotlin {
-    jvmToolchain(8)
+    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.22.0")
 }
 
 tasks.withType<KotlinCompile> {
