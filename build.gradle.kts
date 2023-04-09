@@ -15,9 +15,6 @@ plugins {
     id("io.github.gradle-nexus.publish-plugin") version "1.3.0"
 }
 
-group = "com.schmonz.whenalltestsweregreen"
-version = "0.1-SNAPSHOT"
-
 kotlin {
     jvmToolchain(8)
 }
