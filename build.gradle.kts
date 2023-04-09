@@ -4,10 +4,15 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm") version "1.8.20"
-    id("java-library")
-    id("jacoco")
+    jacoco
     id("com.github.ben-manes.versions") version "0.46.0"
     id("io.gitlab.arturbosch.detekt") version "1.22.0"
+
+    // publishing
+    `java-library`
+    `maven-publish`
+    signing
+    id("io.github.gradle-nexus.publish-plugin") version "1.3.0"
 }
 
 group = "com.schmonz.whenalltestsweregreen"
@@ -61,4 +66,51 @@ fun isNonStable(version: String): Boolean {
     val regex = "^[0-9,.v-]+(-r)?$".toRegex()
     val isStable = stableKeyword || regex.matches(version)
     return isStable.not()
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("mavenJava") {
+            from(components["java"])
+            pom {
+                name.set("When All Tests Were Green")
+                description.set("Optimize your commit flow: Run your tests once and only once")
+                url.set("https://schmonz.com/software/when-all-tests-were-green")
+                licenses {
+                    license {
+                        name.set("The Unlicense")
+                        url.set("https://unlicense.org")
+                    }
+                }
+                developers {
+                    developer {
+                        id.set("schmonz")
+                        name.set("Amitai Schleier")
+                        email.set("schmonz-web-whenalltestsweregreen@schmonz.com")
+                    }
+                }
+                scm {
+                    connection.set("scm:git:git@github.com:schmonz/junit-whenalltestsweregreen.git")
+                    developerConnection.set("scm:git:git@github.com:schmonz/junit-whenalltestsweregreen.git")
+                    url.set("https://github.com/schmonz/junit-whenalltestsweregreen.git")
+                }
+            }
+        }
+    }
+}
+
+nexusPublishing {
+    repositories {
+        sonatype { // only for users registered in Sonatype after 24 Feb 2021
+            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
+            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
+        }
+    }
+}
+
+signing {
+    val signingKey: String? by project
+    val signingPassword: String? by project
+    useInMemoryPgpKeys(signingKey, signingPassword)
+    sign(publishing.publications["mavenJava"])
 }
