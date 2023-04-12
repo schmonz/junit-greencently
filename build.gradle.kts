@@ -69,6 +69,7 @@ publishing {
     publications {
         create<MavenPublication>("mavenJava") {
             from(components["java"])
+
             pom {
                 name.set("When All Tests Were Green")
                 description.set("Optimize your commit flow: Run your tests once and only once")
@@ -99,8 +100,8 @@ publishing {
 nexusPublishing {
     repositories {
         sonatype {
-            username.set(System.getenv("OSSRH_USERNAME") ?: return@sonatype)
-            password.set(System.getenv("OSSRH_PASSWORD") ?: return@sonatype)
+//            username.set(System.getenv("OSSRH_USERNAME") ?: return@sonatype)
+//            password.set(System.getenv("OSSRH_PASSWORD") ?: return@sonatype)
             nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
             snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
         }
