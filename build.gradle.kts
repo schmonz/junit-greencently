@@ -65,6 +65,11 @@ fun isNonStable(version: String): Boolean {
     return isStable.not()
 }
 
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
 publishing {
     publications {
         create<MavenPublication>("mavenJava") {
