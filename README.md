@@ -16,7 +16,7 @@ Optimize your commit flow. Run your tests once and only once with When All Tests
 ```kotlin
 dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-    testRuntimeOnly(files("../junit-whenalltestsweregreen/build/libs/junit-whenalltestsweregreen-0.1-SNAPSHOT.jar"))
+    testRuntimeOnly("com.schmonz.whenalltestsweregreen:junit-whenalltestsweregreen:LATEST_VERSION_HERE")
 }
 tasks.withType<Test> {
     jvmArgs("-Djunit.jupiter.extensions.autodetection.enabled=true")
@@ -29,7 +29,7 @@ tasks.withType<Test> {
 ```groovy
 dependencies {
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-    testRuntimeOnly files('../junit-whenalltestsweregreen/build/libs/junit-whenalltestsweregreen-0.1-SNAPSHOT.jar')
+    testRuntimeOnly 'com.schmonz.whenalltestsweregreen:junit-whenalltestsweregreen:LATEST_VERSION_HERE'
 }
 test {
     systemProperty("junit.jupiter.extensions.autodetection.enabled", true)
