@@ -11,7 +11,7 @@ Optimize your commit flow. Run your tests once and only once with When All Tests
 
 ## How to use
 
-1. Add this to your `build.gradle.kts`:
+1. Add to your `build.gradle.kts`:
 
 ```kotlin
 dependencies {
@@ -19,29 +19,14 @@ dependencies {
 }
 tasks.withType<Test> {
     jvmArgs("-Djunit.jupiter.extensions.autodetection.enabled=true")
-    maxParallelForks = 1
+    maxParallelForks = 1  // until we know how to combine results from Gradle's Test Executors
 }
 ```
 
-...or `build.gradle`:
-
-```groovy
-dependencies {
-    testRuntimeOnly 'com.schmonz.whenalltestsweregreen:junit-whenalltestsweregreen:LATEST_VERSION_HERE'
-}
-test {
-    systemProperty("junit.jupiter.extensions.autodetection.enabled", true)
-    maxParallelForks = 1
-}
-```
-
-2. Add this line to your `.gitignore`: `*when-all-tests-were-green`
+2. Add to your `.gitignore`: `*when-all-tests-were-green`
 3. Run all your tests greenly
 4. Watch `junit5-when-all-tests-were-green` appear at the top level of your repo (while _not_ appearing in `git status`)
 5. Check its modification time in your pre-commit hook
-
-Once we know how to add together the green tests from each of Gradle's Test Executors, we won't need to have an opinion
-about `maxParallelForks`.
 
 ## Alternatives
 
