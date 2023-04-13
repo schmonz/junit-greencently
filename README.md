@@ -15,7 +15,6 @@ Optimize your commit flow. Run your tests once and only once with When All Tests
 
 ```kotlin
 dependencies {
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     testRuntimeOnly("com.schmonz.whenalltestsweregreen:junit-whenalltestsweregreen:LATEST_VERSION_HERE")
 }
 tasks.withType<Test> {
@@ -28,7 +27,6 @@ tasks.withType<Test> {
 
 ```groovy
 dependencies {
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     testRuntimeOnly 'com.schmonz.whenalltestsweregreen:junit-whenalltestsweregreen:LATEST_VERSION_HERE'
 }
 test {
