@@ -9,7 +9,7 @@ recently, well, _that's_ why you have a pre-commit hook: not to annoy you, but t
 
 Optimize your commit flow. Run your tests once and only once with When All Tests Were Green.
 
-## When not to use
+## When not to try
 
 ### No appreciable benefit if...
 
@@ -23,7 +23,7 @@ Optimize your commit flow. Run your tests once and only once with When All Tests
 - The behavior change you want to see first is something other than "smaller, more frequent commits", and/or
 - You were hoping to introduce something revolutionary, or at least challenging for people to adjust to
 
-## How to use
+## How to try
 
 1. Add to your `build.gradle.kts`:
 
