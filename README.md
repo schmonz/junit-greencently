@@ -9,6 +9,20 @@ recently, well, _that's_ why you have a pre-commit hook: not to annoy you, but t
 
 Optimize your commit flow. Run your tests once and only once with When All Tests Were Green.
 
+## When not to use
+
+### No appreciable benefit if...
+
+- You don't have or want a pre-commit hook that runs the tests, and/or
+- Your complete test suite runs in microseconds (_nice!_), and/or
+- You commit 2-3 times per day and that's totally fine
+
+### Bad tradeoff if...
+
+- In your context it somehow adds more risk than it mitigates, and/or
+- The behavior change you want to see first is something other than "smaller, more frequent commits", and/or
+- You were hoping to introduce something revolutionary, or at least challenging for people to adjust to
+
 ## How to use
 
 1. Add to your `build.gradle.kts`:
@@ -27,3 +41,11 @@ tasks.withType<Test> {
 3. Run all your tests greenly
 4. Watch `junit5-when-all-tests-were-green` appear at the top level of your repo (while _not_ appearing in `git status`)
 5. Check its modification time in your pre-commit hook
+
+## Endorsements
+
+> Please do not use and do not advertise that extension.
+> It's going to cause damage to your teams and others'.  
+> -- [Andrea L. on LinkedIn](https://www.linkedin.com/feed/update/urn:li:activity:7052043459565682688?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7052043459565682688%2C7052311132509757440%29&replyUrn=urn%3Ali%3Acomment%3A%28activity%3A7052043459565682688%2C7052341771158102016%29&dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287052311132509757440%2Curn%3Ali%3Aactivity%3A7052043459565682688%29&dashReplyUrn=urn%3Ali%3Afsd_comment%3A%287052341771158102016%2Curn%3Ali%3Aactivity%3A7052043459565682688%29)
+
+I'm as yet unable to imagine why or how, but who knows, he may be right.
