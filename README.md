@@ -46,18 +46,13 @@ tasks.withType<Test> {
 #!/bin/sh
 
 all_tests_were_recently_green() {
-    local thenstamp nowstamp
-
     thenstamp=$(stat -f '%m' junit5-when-all-tests-were-green 2>/dev/null || echo 0)
     nowstamp=$(date '+%s')
     secondsago=$(expr ${nowstamp} - ${thenstamp})
-
     [ ${secondsago} -lt 30 ]
 }
 
-if ! all_tests_were_recently_green; then
-    ./gradlew clean build
-fi
+all_tests_were_recently_green || ./gradlew clean build
 ```
 
 ## Endorsements
