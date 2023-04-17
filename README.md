@@ -62,6 +62,8 @@ fi
 
 ## Endorsements
 
+> Completely antithetical to test-driven development.
+>
 > Please do not use and do not advertise that extension.
 > It's going to cause damage to your teams and others'.  
 > -- [Andrea L. on LinkedIn](https://www.linkedin.com/feed/update/urn:li:activity:7052043459565682688?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7052043459565682688%2C7052311132509757440%29&replyUrn=urn%3Ali%3Acomment%3A%28activity%3A7052043459565682688%2C7052341771158102016%29&dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287052311132509757440%2Curn%3Ali%3Aactivity%3A7052043459565682688%29&dashReplyUrn=urn%3Ali%3Afsd_comment%3A%287052341771158102016%2Curn%3Ali%3Aactivity%3A7052043459565682688%29)
