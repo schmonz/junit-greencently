@@ -40,7 +40,25 @@ tasks.withType<Test> {
 2. Add to your `.gitignore`: `*when-all-tests-were-green`
 3. Run all your tests greenly
 4. Watch `junit5-when-all-tests-were-green` appear at the top level of your repo (while _not_ appearing in `git status`)
-5. Check its modification time in your pre-commit hook
+5. Check its modification time in your pre-commit hook, perhaps like so:
+
+```sh
+#!/bin/sh
+
+all_tests_were_recently_green() {
+    local thenstamp nowstamp
+
+    thenstamp=$(stat -f '%m' junit5-when-all-tests-were-green 2>/dev/null || echo 0)
+    nowstamp=$(date '+%s')
+    secondsago=$(expr ${nowstamp} - ${thenstamp})
+
+    [ ${secondsago} -lt 30 ]
+}
+
+if ! all_tests_were_recently_green; then
+    ./gradlew clean build
+fi
+```
 
 ## Endorsements
 
