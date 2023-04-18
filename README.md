@@ -26,8 +26,7 @@ Optimize your commit flow. Run your tests once and only once with When All Tests
 
 ## How to try
 
-1. Add to your `build.gradle.kts`:
-
+1. Add to your `build.gradle.kts` (see [Maven Central](https://central.sonatype.com/artifact/com.schmonz/junit-whenalltestsweregreen/) for the latest version and other build tools):
 ```kotlin
 dependencies {
     testRuntimeOnly("com.schmonz:junit-whenalltestsweregreen:LATEST_VERSION_HERE")
@@ -37,12 +36,10 @@ tasks.withType<Test> {
     maxParallelForks = 1  // until we know how to combine results from Gradle's Test Executors
 }
 ```
-
 2. Add to your `.gitignore`: `*when-all-tests-were-green`
 3. Run all your tests greenly
 4. Watch `junit5-when-all-tests-were-green` appear at the top level of your repo (while _not_ appearing in `git status`)
 5. Check its modification time in your pre-commit hook, perhaps like so:
-
 ```sh
 #!/bin/sh
 
