@@ -13,6 +13,7 @@ Optimize your commit flow. Run your tests once and only once with When All Tests
 
 ### No appreciable benefit if...
 
+- You're not using JUnit 5 (for now -- other integrations are very desired), and/or
 - You don't have or want a pre-commit hook that runs the tests, and/or
 - Your complete test suite runs in microseconds (_nice!_), and/or
 - You commit 2-3 times per day and that's totally fine
