@@ -42,7 +42,7 @@ class JUnit5Listener : TestExecutionListener {
                     )
             ).isTotal()
         ) {
-            Timestamp("junit5-").setToNow()
+            Timestamp("junit5").setToNow()
         }
     }
 }
