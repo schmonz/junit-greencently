@@ -7,7 +7,7 @@ Whenever all tests are green, this JUnit extension updates a timestamp in the bu
 within the last (say) 30 seconds, your pre-commit hook can avoid running them again. And if they weren't green that
 recently, well, _that's_ why you have a pre-commit hook: not to annoy you, but to help you do what you meant to do.
 
-Optimize your commit flow. Run your tests once and only once with When All Tests Were Green.
+Optimize your development flow. All tests green? Commit now, quickly, with When All Tests Were Green.
 
 ## How to try it
 
