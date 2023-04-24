@@ -1,13 +1,21 @@
 # When All Tests Were Green
 
-Do you like small commits? Do you _usually_ remember to run the tests first? Make safe, tested commits faster with When
-All Tests Were Green.
+Got a pre-commit hook that runs JUnit 5 tests?
+Add "When All Tests Were Green" to your build.
+Your workflow doesn't change.
+Nobody needs to learn anything.
+Commits finish faster.
 
-Whenever all tests are green, this JUnit extension updates a timestamp in the build directory. Then, if tests were green
-within the last (say) 30 seconds, your pre-commit hook can avoid running them again. And if they weren't green that
-recently, well, _that's_ why you have a pre-commit hook: not to annoy you, but to help you do what you meant to do.
+Your intention is to commit only code that passes tests.
+The purpose of the pre-commit hook is to help you carry out your intention.
+When All Tests Were Green updates a timestamp file on each green and complete test run.
+If the timestamp isn't recent enough, you forgot to run the tests; the pre-commit hook will catch the mistake.
+If the timestamp _is_ recent enough, the pre-commit hook might have other important jobs, but running the same tests on the same code isn't one of them.
 
-Optimize your development flow. All tests green? Commit now, quickly, with When All Tests Were Green.
+With friction reduced, maybe you'll find yourselves committing more often.
+With time and energy saved, maybe you'll invest in further test speedups.
+
+All tests green? Commit now, quickly, with When All Tests Were Green.
 
 ## How to try it
 
