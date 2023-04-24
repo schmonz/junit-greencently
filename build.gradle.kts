@@ -77,7 +77,7 @@ publishing {
 
             pom {
                 name.set("When All Tests Were Green")
-                description.set("Optimize your commit flow: Run your tests once and only once")
+                description.set("Optimize your development flow. All tests green? Commit now, quickly.")
                 url.set("https://schmonz.com/software/when-all-tests-were-green")
                 licenses {
                     license {
