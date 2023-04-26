@@ -3,7 +3,7 @@ import io.gitlab.arturbosch.detekt.Detekt
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.8.20"
+    kotlin("jvm") version "1.8.21"
     jacoco
     id("com.github.ben-manes.versions") version "0.46.0"
     id("io.gitlab.arturbosch.detekt") version "1.22.0"
@@ -25,7 +25,7 @@ repositories {
 
 dependencies {
     // JUnit 5 test discovery
-    implementation("org.junit.platform:junit-platform-launcher:1.9.2")
+    implementation("org.junit.platform:junit-platform-launcher:1.9.3")
 
     detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.22.0")
 }
