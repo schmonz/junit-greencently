@@ -1,4 +1,4 @@
-package com.schmonz.whenalltestsweregreen.planner
+package com.schmonz.greencently.planner
 
 import org.junit.platform.engine.discovery.ClassNameFilter
 import org.junit.platform.engine.discovery.DiscoverySelectors

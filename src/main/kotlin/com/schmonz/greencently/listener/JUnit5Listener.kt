@@ -1,9 +1,9 @@
-package com.schmonz.whenalltestsweregreen.listener
+package com.schmonz.greencently.listener
 
-import com.schmonz.whenalltestsweregreen.Greenness
-import com.schmonz.whenalltestsweregreen.Timestamp
-import com.schmonz.whenalltestsweregreen.planner.JUnit5Planner
-import com.schmonz.whenalltestsweregreen.summary.JUnit5Summary
+import com.schmonz.greencently.Greenness
+import com.schmonz.greencently.Timestamp
+import com.schmonz.greencently.planner.JUnit5Planner
+import com.schmonz.greencently.summary.JUnit5Summary
 import org.junit.platform.engine.TestExecutionResult
 import org.junit.platform.engine.TestExecutionResult.Status.SUCCESSFUL
 import org.junit.platform.launcher.TestExecutionListener

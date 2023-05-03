@@ -76,9 +76,9 @@ publishing {
             from(components["java"])
 
             pom {
-                name.set("When All Tests Were Green")
+                name.set("Greencently")
                 description.set("Optimize your development flow. All tests green? Commit now, quickly.")
-                url.set("https://schmonz.com/software/when-all-tests-were-green")
+                url.set("https://schmonz.com/software/greencently")
                 licenses {
                     license {
                         name.set("The Unlicense")
@@ -89,13 +89,13 @@ publishing {
                     developer {
                         id.set("schmonz")
                         name.set("Amitai Schleier")
-                        email.set("schmonz-web-whenalltestsweregreen@schmonz.com")
+                        email.set("schmonz-web-greencently@schmonz.com")
                     }
                 }
                 scm {
-                    connection.set("scm:git:git@github.com:schmonz/junit-whenalltestsweregreen.git")
-                    developerConnection.set("scm:git:git@github.com:schmonz/junit-whenalltestsweregreen.git")
-                    url.set("https://github.com/schmonz/junit-whenalltestsweregreen.git")
+                    connection.set("scm:git:git@github.com:schmonz/junit-greencently.git")
+                    developerConnection.set("scm:git:git@github.com:schmonz/junit-greencently.git")
+                    url.set("https://github.com/schmonz/junit-greencently.git")
                 }
             }
         }

@@ -1,4 +1,4 @@
-package com.schmonz.whenalltestsweregreen
+package com.schmonz.greencently
 
 import java.nio.file.Paths
 import java.nio.file.attribute.FileTime

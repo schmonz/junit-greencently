@@ -1,4 +1,4 @@
-package com.schmonz.whenalltestsweregreen.summary
+package com.schmonz.greencently.summary
 
 import org.junit.platform.launcher.TestIdentifier
 import org.junit.platform.launcher.TestPlan

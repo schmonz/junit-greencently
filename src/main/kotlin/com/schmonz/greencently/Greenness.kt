@@ -1,6 +1,6 @@
-package com.schmonz.whenalltestsweregreen
+package com.schmonz.greencently
 
-import com.schmonz.whenalltestsweregreen.summary.JUnit5Summary
+import com.schmonz.greencently.summary.JUnit5Summary
 
 class Greenness(private val actuallyRan: JUnit5Summary, private val couldHaveRun: JUnit5Summary) {
     private fun enoughTestsRan() =
