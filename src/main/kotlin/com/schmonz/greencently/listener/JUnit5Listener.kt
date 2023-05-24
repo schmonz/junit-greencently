@@ -31,15 +31,15 @@ class JUnit5Listener : TestExecutionListener {
     private fun judgeResultsOfAllTests(testPlan: TestPlan) {
         if (Greenness(
                 JUnit5Summary(
-                        testPlan,
-                        anyTestsRed,
-                        anyTestsGreen
-                    ),
+                    testPlan,
+                    anyTestsRed,
+                    anyTestsGreen
+                ),
                 JUnit5Summary(
-                        JUnit5Planner(null).prepareTestPlan(),
-                        anyTestsRed = false,
-                        anyTestsGreen = false
-                    )
+                    JUnit5Planner(null).prepareTestPlan(),
+                    anyTestsRed = false,
+                    anyTestsGreen = false
+                )
             ).isTotal()
         ) {
             Timestamp("junit5").setToNow()
