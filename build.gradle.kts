@@ -27,7 +27,7 @@ dependencies {
     // JUnit 5 test discovery
     implementation("org.junit.platform:junit-platform-launcher:1.10.0")
 
-    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.1")
+    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.3")
 }
 
 tasks.withType<KotlinCompile> {
