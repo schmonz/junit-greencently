@@ -3,7 +3,7 @@ import io.gitlab.arturbosch.detekt.Detekt
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.9.10"
+    kotlin("jvm") version "1.9.20"
     jacoco
     id("com.github.ben-manes.versions") version "0.49.0"
     id("io.gitlab.arturbosch.detekt") version "1.23.1"
