@@ -81,7 +81,7 @@ publishing {
 
             pom {
                 name.set("Greencently")
-                description.set("Optimize your development flow. All tests green? Commit now, quickly.")
+                description.set("Optimize your pre-commit hook's test run. All tests green, recently? Commit quickly and stay in flow.")
                 url.set("https://schmonz.com/software/greencently")
                 licenses {
                     license {
