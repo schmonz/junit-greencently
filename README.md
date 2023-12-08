@@ -4,12 +4,12 @@ For teams whose commits fail on red tests, Greencently offers an optimization:
 the pre-commit hook can know when you've run all tests green "recently enough".
 Team chooses policy.
 
-## Benefits (now)
+## Benefits (immediate)
 
 - Lower-friction commits
 - Time and energy saved
 
-## Benefits (soon)
+## Benefits (speculative)
 
 Probably you'll lean into smaller, more frequent commits.
 Maybe you'll also feel more able to invest in further test speedups.
