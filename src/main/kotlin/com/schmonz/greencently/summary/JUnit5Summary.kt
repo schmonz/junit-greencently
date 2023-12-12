@@ -7,7 +7,7 @@ class JUnit5Summary(testPlan: TestPlan, internal val anyTestsRed: Boolean, inter
     internal val testCount = testPlan.countTestIdentifiers(TestIdentifier::isTest)
 
     init {
-        if (System.getProperty("WHENALLTESTSWEREGREEN_SUMMARY") != null) {
+        if (System.getProperty("GREENCENTLY_SUMMARY") != null) {
             println(
                 "total tests: ${this.testCount}\nany green: $anyTestsGreen\nany red: $anyTestsRed\n",
             )
