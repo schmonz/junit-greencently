@@ -1,3 +1,5 @@
+![Build status](https://github.com/schmonz/junit-greencently/actions/workflows/main-build.yml/badge.svg)
+
 # Greencently
 
 For teams whose commits fail on red tests, Greencently offers an optimization:
