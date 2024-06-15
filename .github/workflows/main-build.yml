@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/actions/setup-gradle@v3
 
       - name: clean
         run: ./gradlew clean
@@ -39,8 +39,8 @@ jobs:
 
       - name: release
         env:
-          ORG_GRADLE_PROJECT_sonatypeUsername: ${{ secrets.SonatypeUsername }}
-          ORG_GRADLE_PROJECT_sonatypePassword: ${{ secrets.SonatypePassword }}
+          ORG_GRADLE_PROJECT_sonatypeUsername: ${{ secrets.CENTRAL_TOKEN_USERNAME }}
+          ORG_GRADLE_PROJECT_sonatypePassword: ${{ secrets.CENTRAL_TOKEN_PASSWORD }}
           ORG_GRADLE_PROJECT_signingKey: ${{ secrets.SigningKey }}
           ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.SigningPassword }}
         run: ./gradlew -Pversion=0.0.${{ github.run_number }} publishToSonatype closeAndReleaseSonatypeStagingRepository
