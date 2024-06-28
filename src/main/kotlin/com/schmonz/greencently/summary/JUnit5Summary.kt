@@ -15,10 +15,15 @@ class JUnit5Summary(testPlan: TestPlan, internal val anyTestsRed: Boolean, inter
     }
 
     override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (other !is JUnit5Summary) return false
-        if (testCount == other.testCount && anyTestsRed == other.anyTestsRed && anyTestsGreen == other.anyTestsGreen)
+        if (this === other) {
             return true
+        }
+        if (other !is JUnit5Summary) {
+            return false
+        }
+        if (testCount == other.testCount && anyTestsRed == other.anyTestsRed && anyTestsGreen == other.anyTestsGreen) {
+            return true
+        }
         return false
     }
 
