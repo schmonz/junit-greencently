@@ -21,7 +21,7 @@ class JUnit5Summary(testPlan: TestPlan, internal val anyTestsRed: Boolean, inter
         if (other !is JUnit5Summary) {
             return false
         }
-        if (testCount == other.testCount && anyTestsRed == other.anyTestsRed && anyTestsGreen == other.anyTestsGreen) {
+        if (testCount == other.testCount && anyTestsGreen && !anyTestsRed) {
             return true
         }
         return false
