@@ -1,6 +1,5 @@
 package com.schmonz.greencently.listener
 
-import com.schmonz.greencently.Greenness
 import com.schmonz.greencently.Timestamp
 import com.schmonz.greencently.planner.JUnit5Planner
 import com.schmonz.greencently.summary.JUnit5Summary
@@ -29,18 +28,8 @@ class JUnit5Listener : TestExecutionListener {
     }
 
     private fun judgeResultsOfAllTests(testPlan: TestPlan) {
-        if (Greenness(
-                JUnit5Summary(
-                    testPlan,
-                    anyTestsRed,
-                    anyTestsGreen
-                ),
-                JUnit5Summary(
-                    JUnit5Planner(null).prepareTestPlan(),
-                    anyTestsRed = false,
-                    anyTestsGreen = false
-                )
-            ).isTotal()
+        if (JUnit5Summary(testPlan, anyTestsRed, anyTestsGreen) ==
+            JUnit5Summary(JUnit5Planner(null).prepareTestPlan(), anyTestsRed = false, anyTestsGreen = false)
         ) {
             Timestamp("junit5").setToNow()
         }
