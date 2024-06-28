@@ -1,4 +1,5 @@
-![Build status](https://github.com/schmonz/junit-greencently/actions/workflows/main-build.yml/badge.svg)
+[![Build status](https://github.com/schmonz/junit-greencently/actions/workflows/main-build.yml/badge.svg)](https://github.com/schmonz/junit-greencently/actions/workflows/main-build.yml)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.schmonz/junit-greencently/badge.svg?gav=true)](https://central.sonatype.com/artifact/com.schmonz/junit-greencently)
 
 # Greencently
 
