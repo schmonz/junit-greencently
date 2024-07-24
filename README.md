@@ -28,7 +28,6 @@ dependencies {
     testRuntimeOnly("com.schmonz:junit-greencently:CHECK_ABOVE_FOR_VERSION")
 }
 tasks.withType<Test> {
-    jvmArgs("-Djunit.jupiter.extensions.autodetection.enabled=true")
     maxParallelForks = 1  // see issue #4
 }
 ```
