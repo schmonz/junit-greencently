@@ -11,8 +11,8 @@ class JUnit5Summary(testPlan: TestPlan, internal val anyTestsGreen: Boolean, int
         if (System.getProperty("GREENCENTLY_SUMMARY") != null) {
             println(
                 "total tests: ${this.testCount}\n" +
-                "any green: $anyTestsGreen\n" +
-                "any red: $anyTestsRed\n",
+                    "any green: $anyTestsGreen\n" +
+                    "any red: $anyTestsRed\n",
             )
         }
     }
