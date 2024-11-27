@@ -32,20 +32,20 @@ tasks.withType<Test> {
 }
 ```
 2. Run all tests in project
-3. If green, observe top-level timestamp file `.when-all-tests-were-green-junit5`
-4. Append to top-level `.gitignore`: `*when-all-tests-were-green*`
+3. If green, observe top-level timestamp file `.greencently-junit5`
+4. Append to top-level `.gitignore`: `*greencently*`
 5. Observe `git status` _not_ showing timestamp file
 6. In pre-commit hook, inspect file modification time. Example:
 ```sh
 #!/bin/sh
-all_tests_were_recently_green() {
+greencently() {
     too_many_seconds_ago=$1
-    thenstamp=$(date -r .when-all-tests-were-green-junit5 '+%s' 2>/dev/null || echo 0)
+    thenstamp=$(date -r .greencently-junit5 '+%s' 2>/dev/null || echo 0)
     nowstamp=$(date '+%s')
     secondsago=$(expr ${nowstamp} - ${thenstamp})
     [ ${secondsago} -lt ${too_many_seconds_ago} ]
 }
-if all_tests_were_recently_green 30; then
+if greencently 30; then
     ./gradlew clean build -x test
 else
     ./gradlew clean build

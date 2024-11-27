@@ -7,7 +7,7 @@ import kotlin.io.path.setLastModifiedTime
 
 class Timestamp(suffix: String) {
     private val path = Paths.get(System.getProperty("user.dir"))
-        .resolve(".when-all-tests-were-green-$suffix")
+        .resolve(".greencently-$suffix")
 
     private fun modifyFile() =
         path.setLastModifiedTime(FileTime.from(Instant.now()))
