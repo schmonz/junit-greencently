@@ -35,7 +35,8 @@ class JUnit5Listener : TestExecutionListener {
             )
         }
 
-        val expected = JUnit5Summary(JUnit5Planner(null).getTestCount(), anyTestsGreen = 0, anyTestsRed = 0)
+        val expectedTestCount = JUnit5Planner(null).getTestCount()
+        val expected = JUnit5Summary(expectedTestCount, expectedTestCount, 0)
         val actual = JUnit5Summary(greenTestCount + redTestCount, greenTestCount, redTestCount)
         if (actual == expected) Timestamp("junit5").setToNow()
     }
