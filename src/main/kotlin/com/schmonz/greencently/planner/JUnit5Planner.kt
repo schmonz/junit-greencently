@@ -36,7 +36,6 @@ class JUnit5Planner(testClasspath: Path?, private val testClassesMatching: Strin
                     .selectors(DiscoverySelectors.selectClasspathRoots(setOf(testClasspath)))
                     .filters(ClassNameFilter.includeClassNamePatterns(testClassesMatching))
                     .build()
-            ).
-            countTestIdentifiers(TestIdentifier::isTest)
-
+            )
+            .countTestIdentifiers(TestIdentifier::isTest)
 }
