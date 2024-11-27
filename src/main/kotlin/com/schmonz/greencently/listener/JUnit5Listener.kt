@@ -10,16 +10,16 @@ import org.junit.platform.launcher.TestIdentifier
 import org.junit.platform.launcher.TestPlan
 
 class JUnit5Listener : TestExecutionListener {
-    private var anyTestsRed = false
     private var anyTestsGreen = false
+    private var anyTestsRed = false
 
     override fun executionFinished(testIdentifier: TestIdentifier, testExecutionResult: TestExecutionResult) =
-        observeResultOfOneTest(testExecutionResult)
+        accumulateResultsOfEachTest(testExecutionResult)
 
     override fun testPlanExecutionFinished(testPlan: TestPlan) =
-        judgeResultsOfAllTests(testPlan)
+        updateTimestampIfAndOnlyIfAllTestsPass(testPlan)
 
-    private fun observeResultOfOneTest(testExecutionResult: TestExecutionResult) {
+    private fun accumulateResultsOfEachTest(testExecutionResult: TestExecutionResult) {
         if (testExecutionResult.status == SUCCESSFUL) {
             anyTestsGreen = true
         } else {
@@ -27,11 +27,9 @@ class JUnit5Listener : TestExecutionListener {
         }
     }
 
-    private fun judgeResultsOfAllTests(testPlan: TestPlan) {
-        if (JUnit5Summary(testPlan, anyTestsRed, anyTestsGreen) ==
-            JUnit5Summary(JUnit5Planner(null).prepareTestPlan(), anyTestsRed = false, anyTestsGreen = false)
-        ) {
-            Timestamp("junit5").setToNow()
-        }
+    private fun updateTimestampIfAndOnlyIfAllTestsPass(testPlan: TestPlan) {
+        val expected = JUnit5Summary(JUnit5Planner(null).prepareTestPlan(), anyTestsGreen = false, anyTestsRed = false)
+        val actual = JUnit5Summary(testPlan, anyTestsGreen, anyTestsRed)
+        if (actual == expected) Timestamp("junit5").setToNow()
     }
 }
