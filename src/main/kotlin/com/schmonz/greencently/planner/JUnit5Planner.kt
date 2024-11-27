@@ -2,7 +2,7 @@ package com.schmonz.greencently.planner
 
 import org.junit.platform.engine.discovery.ClassNameFilter
 import org.junit.platform.engine.discovery.DiscoverySelectors
-import org.junit.platform.launcher.TestIdentifier
+import org.junit.platform.launcher.TestPlan
 import org.junit.platform.launcher.core.LauncherDiscoveryRequestBuilder
 import org.junit.platform.launcher.core.LauncherFactory
 import java.nio.file.Path
@@ -27,7 +27,7 @@ class JUnit5Planner(testClasspath: Path?, private val testClassesMatching: Strin
     private fun isGradleOutputClasspath(path: String) =
         path.endsWith("/test")
 
-    fun getTestCount(): Long =
+    fun prepareTestPlan(): TestPlan =
         LauncherFactory
             .create()
             .discover(
@@ -37,5 +37,4 @@ class JUnit5Planner(testClasspath: Path?, private val testClassesMatching: Strin
                     .filters(ClassNameFilter.includeClassNamePatterns(testClassesMatching))
                     .build()
             )
-            .countTestIdentifiers(TestIdentifier::isTest)
 }

@@ -1,8 +1,12 @@
 package com.schmonz.greencently.summary
 
+import org.junit.platform.launcher.TestIdentifier
+import org.junit.platform.launcher.TestPlan
 import java.util.Objects
 
-class JUnit5Summary(internal val testCount: Long, internal val greenTestCount: Long, internal val redTestCount: Long) {
+class JUnit5Summary(testPlan: TestPlan, internal val greenTestCount: Long, internal val redTestCount: Long) {
+    internal val testCount = testPlan.countTestIdentifiers(TestIdentifier::isTest)
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other !is JUnit5Summary) return false

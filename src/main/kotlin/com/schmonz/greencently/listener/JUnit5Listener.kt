@@ -17,7 +17,7 @@ class JUnit5Listener : TestExecutionListener {
         accumulateResultsOfEachTest(testExecutionResult)
 
     override fun testPlanExecutionFinished(testPlan: TestPlan) =
-        updateTimestampIfAndOnlyIfAllTestsPass()
+        updateTimestampIfAndOnlyIfAllTestsPass(testPlan)
 
     private fun accumulateResultsOfEachTest(testExecutionResult: TestExecutionResult) {
         if (testExecutionResult.status == SUCCESSFUL) {
@@ -27,17 +27,15 @@ class JUnit5Listener : TestExecutionListener {
         }
     }
 
-    private fun updateTimestampIfAndOnlyIfAllTestsPass() {
+    private fun updateTimestampIfAndOnlyIfAllTestsPass(testPlan: TestPlan) {
         if (System.getenv("GREENCENTLY_SUMMARY") !== null) {
             System.err.println(
-                "greencently (total, green, red): " +
-                    "(${greenTestCount + redTestCount}, $greenTestCount, $redTestCount)"
+                "greencently (green, red): ($greenTestCount, $redTestCount)"
             )
         }
 
-        val expectedTestCount = JUnit5Planner(null).getTestCount()
-        val expected = JUnit5Summary(expectedTestCount, expectedTestCount, 0)
-        val actual = JUnit5Summary(greenTestCount + redTestCount, greenTestCount, redTestCount)
+        val expected = JUnit5Summary(JUnit5Planner(null).prepareTestPlan(), 0, 0)
+        val actual = JUnit5Summary(testPlan, greenTestCount, redTestCount)
         if (actual == expected) Timestamp("junit5").setToNow()
     }
 }
