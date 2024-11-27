@@ -12,7 +12,7 @@ class JUnit5Summary(internal val testCount: Long, internal val greenTestCount: L
         if (System.getenv("GREENCENTLY_SUMMARY") !== null) {
             System.err.println("SUMMARY: $testCount, $greenTestCount, $redTestCount")
             System.err.println("OTHER: ${other.testCount}, ${other.greenTestCount}, ${other.redTestCount}")
-            System.err.println("EQUAL? ${thinkItsEqual}")
+            System.err.println("EQUAL? $thinkItsEqual")
         }
 
         return thinkItsEqual
