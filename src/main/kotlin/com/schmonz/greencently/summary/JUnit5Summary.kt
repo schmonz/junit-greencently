@@ -1,29 +1,14 @@
 package com.schmonz.greencently.summary
 
-import org.junit.platform.launcher.TestIdentifier
-import org.junit.platform.launcher.TestPlan
 import java.util.Objects
 
-class JUnit5Summary(testPlan: TestPlan, internal val anyTestsGreen: Boolean, internal val anyTestsRed: Boolean) {
-    internal val testCount = testPlan.countTestIdentifiers(TestIdentifier::isTest)
-
-    init {
-        if (System.getenv("GREENCENTLY_SUMMARY") !== null) {
-            System.err.println(
-                "total tests: ${this.testCount}\n" +
-                    "any green: $anyTestsGreen\n" +
-                    "any red: $anyTestsRed\n",
-            )
-        }
-    }
-
+class JUnit5Summary(internal val testCount: Long, internal val anyTestsGreen: Long, internal val anyTestsRed: Long) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other !is JUnit5Summary) return false
-        return (testCount == other.testCount && anyTestsGreen && !anyTestsRed)
+        return (testCount == other.testCount && anyTestsGreen > 0 && anyTestsRed == 0L)
     }
 
-    override fun hashCode(): Int {
-        return Objects.hash(anyTestsGreen, anyTestsRed, testCount)
-    }
+    override fun hashCode(): Int =
+        Objects.hash(anyTestsGreen, anyTestsRed, testCount)
 }
