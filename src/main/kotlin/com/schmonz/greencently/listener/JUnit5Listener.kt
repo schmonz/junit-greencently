@@ -14,12 +14,14 @@ class JUnit5Listener : TestExecutionListener {
     private var redTestCount = 0L
 
     override fun executionFinished(testIdentifier: TestIdentifier, testExecutionResult: TestExecutionResult) =
-        accumulateResultsOfEachTest(testExecutionResult)
+        accumulateResultsOfEachTest(testIdentifier.isTest, testExecutionResult)
 
     override fun testPlanExecutionFinished(testPlan: TestPlan) =
         updateTimestampIfAndOnlyIfAllTestsPass(testPlan)
 
-    private fun accumulateResultsOfEachTest(testExecutionResult: TestExecutionResult) {
+    private fun accumulateResultsOfEachTest(isTest: Boolean, testExecutionResult: TestExecutionResult) {
+        if (!isTest) return
+
         if (testExecutionResult.status == SUCCESSFUL) {
             greenTestCount++
         } else {
