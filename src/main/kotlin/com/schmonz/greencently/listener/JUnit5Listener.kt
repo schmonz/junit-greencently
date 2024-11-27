@@ -31,7 +31,7 @@ class JUnit5Listener : TestExecutionListener {
         if (System.getenv("GREENCENTLY_SUMMARY") !== null) {
             System.err.println(
                 "greencently (total, green, red): " +
-                    "($greenTestCount + $redTestCount, $greenTestCount, $redTestCount)"
+                    "(${greenTestCount + redTestCount}, $greenTestCount, $redTestCount)"
             )
         }
 
