@@ -6,7 +6,7 @@ plugins {
     kotlin("jvm") version "2.1.10"
     jacoco
     id("com.github.ben-manes.versions") version "0.52.0"
-    id("io.gitlab.arturbosch.detekt") version "1.23.7"
+    id("io.gitlab.arturbosch.detekt") version "1.23.8"
 
     // publishing
     `java-library`
