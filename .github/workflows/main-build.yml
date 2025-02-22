@@ -14,6 +14,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Generate trunkver
+        id: trunkver
+        uses: crftd-tech/trunkver@main
+
+      - name: Print trunkver
+        env:
+          TRUNKVER: ${{ steps.trunkver.outputs.trunkver }}
+        run: |
+          echo "$TRUNKVER"
+
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
 
