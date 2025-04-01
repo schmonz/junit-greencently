@@ -1,6 +1,7 @@
 # Testing
 
-- [ ] `./gradlew -PskipSigning -Pversion=99.99.99-SNAPSHOT assemble publishToMavenLocal`
+- [ ] `./gradlew -PskipSigning -Pversion=99.99.99-SNAPSHOT clean detekt classes testClasses check assemble publishToMavenLocal`
+  - (When `.github/main-build.yml` changes, sync to here)
 - [ ] In the IDE, open "Kotlin" portion of GildedRose-Refactoring-Kata
 - [ ] Make sure that project's `build.gradle.kts` contains:
 ```
