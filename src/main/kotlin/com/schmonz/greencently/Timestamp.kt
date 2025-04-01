@@ -16,8 +16,6 @@ class Timestamp(suffix: String) {
         path.toFile().createNewFile()
 
     fun setToNow() {
-        if (!createFile()) {
-            modifyFile()
-        }
+        if (!createFile()) modifyFile()
     }
 }

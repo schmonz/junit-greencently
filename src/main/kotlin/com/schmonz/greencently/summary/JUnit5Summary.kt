@@ -1,27 +1,26 @@
 package com.schmonz.greencently.summary
 
+import com.schmonz.greencently.planner.JUnit5Planner
 import org.junit.platform.launcher.TestIdentifier
 import org.junit.platform.launcher.TestPlan
-import java.util.Objects
 
-class JUnit5Summary(testPlan: TestPlan, internal val greenTestCount: Long, internal val redTestCount: Long) {
-    internal val testCount = testPlan.countTestIdentifiers(TestIdentifier::isTest)
+class JUnit5Summary(testPlanThatJustFinished: TestPlan, internal val greenTestCount: Long, internal val redTestCount: Long) {
+    private val actualTestCount = countTestsInPlan(testPlanThatJustFinished)
 
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (other !is JUnit5Summary) return false
+    private fun countTestsInPlan(testPlan: TestPlan): Long = testPlan.countTestIdentifiers(TestIdentifier::isTest)
 
-        val thinkItsEqual = testCount == other.testCount && greenTestCount > 0 && redTestCount == 0L
+    fun isRunCompleteAndGreen(): Boolean {
+        val expectedTestCount = countTestsInPlan(JUnit5Planner(null).prepareTestPlan())
+
+        val greencently = redTestCount == 0L && 0 < greenTestCount && actualTestCount == expectedTestCount
 
         if (System.getenv("GREENCENTLY_SUMMARY") !== null) {
-            System.err.println("SUMMARY: $testCount, $greenTestCount, $redTestCount")
-            System.err.println("OTHER: ${other.testCount}, ${other.greenTestCount}, ${other.redTestCount}")
-            System.err.println("EQUAL? $thinkItsEqual")
+            System.err.println(
+                "SUMMARY (expected, actual, green, red): $expectedTestCount, $actualTestCount, $greenTestCount, $redTestCount"
+            )
+            System.err.println("TEST RUN COMPLETE AND GREEN: $greencently")
         }
 
-        return thinkItsEqual
+        return greencently
     }
-
-    override fun hashCode(): Int =
-        Objects.hash(greenTestCount, redTestCount, testCount)
 }
