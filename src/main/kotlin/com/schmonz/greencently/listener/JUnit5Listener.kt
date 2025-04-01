@@ -22,8 +22,11 @@ class JUnit5Listener : TestExecutionListener {
     private fun accumulateResultsOfEachTest(isTest: Boolean, testExecutionResultStatus: Status) {
         if (!isTest) return
 
-        if (testExecutionResultStatus == SUCCESSFUL) greenTestCount++
-        else redTestCount++
+        if (testExecutionResultStatus == SUCCESSFUL) {
+            greenTestCount++
+        } else {
+            redTestCount++
+        }
     }
 
     private fun updateTimestampIfAndOnlyIfAllTestsPass(testPlan: TestPlan) {
