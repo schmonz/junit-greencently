@@ -18,12 +18,6 @@ jobs:
         id: trunkver
         uses: crftd-tech/trunkver@main
 
-      - name: Print trunkver
-        env:
-          TRUNKVER: ${{ steps.trunkver.outputs.trunkver }}
-        run: |
-          echo "$TRUNKVER"
-
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
 
@@ -53,4 +47,4 @@ jobs:
           ORG_GRADLE_PROJECT_sonatypePassword: ${{ secrets.CENTRAL_TOKEN_PASSWORD }}
           ORG_GRADLE_PROJECT_signingKey: ${{ secrets.SigningKey }}
           ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.SigningPassword }}
-        run: ./gradlew -Pversion=0.0.${{ github.run_number }} publishToSonatype closeAndReleaseSonatypeStagingRepository
+        run: ./gradlew -Pversion=${{ steps.trunkver.outputs.trunkver }} publishToSonatype closeAndReleaseSonatypeStagingRepository
