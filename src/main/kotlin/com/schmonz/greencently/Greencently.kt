@@ -3,24 +3,31 @@ package com.schmonz.greencently
 import java.nio.file.Paths
 import java.nio.file.attribute.FileTime
 import java.time.Instant
+import kotlin.io.path.createDirectories
 import kotlin.io.path.deleteIfExists
 import kotlin.io.path.setLastModifiedTime
+import kotlin.io.path.writeText
 
-class Greencently(suffix: String) {
-    private val path = Paths.get(System.getProperty("user.dir"))
-        .resolve(".greencently-$suffix")
+class Greencently(filename: String) {
+    private val directory = Paths.get(System.getProperty("user.dir")).resolve(".greencently")
+    private val gitignore = directory.resolve(".gitignore")
+    private val status = directory.resolve(filename)
 
-    private fun newlyCompleteAndGreen() = path.toFile().createNewFile()
-
-    private fun againCompleteAndGreen() = path.setLastModifiedTime(FileTime.from(Instant.now()))
-
-    private fun notCompleteOrNotGreen() = path.deleteIfExists()
-
-    fun setStatus(completeAndGreen: Boolean) {
+    fun writeStatus(completeAndGreen: Boolean) {
         if (completeAndGreen) {
-            if (!newlyCompleteAndGreen()) againCompleteAndGreen()
+            yes()
         } else {
-            notCompleteOrNotGreen()
+            no()
         }
     }
+
+    private fun yes() {
+        directory.createDirectories()
+        gitignore.writeText("*")
+        status.writeText("")
+        status.setLastModifiedTime(FileTime.from(Instant.now()))
+    }
+
+    private fun no() =
+        status.deleteIfExists()
 }

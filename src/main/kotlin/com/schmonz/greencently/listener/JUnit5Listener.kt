@@ -1,35 +1,34 @@
 package com.schmonz.greencently.listener
 
 import com.schmonz.greencently.Greencently
-import com.schmonz.greencently.summary.JUnit5Summary
+import com.schmonz.greencently.results.JUnit5Results
 import org.junit.platform.engine.TestExecutionResult
-import org.junit.platform.engine.TestExecutionResult.Status
 import org.junit.platform.engine.TestExecutionResult.Status.SUCCESSFUL
 import org.junit.platform.launcher.TestExecutionListener
 import org.junit.platform.launcher.TestIdentifier
 import org.junit.platform.launcher.TestPlan
 
 class JUnit5Listener : TestExecutionListener {
-    private var greenTestCount = 0L
-    private var redTestCount = 0L
+    private var greenCount = 0L
+    private var redCount = 0L
 
-    override fun executionFinished(testIdentifier: TestIdentifier, testExecutionResult: TestExecutionResult) =
-        accumulateResultsOfEachTest(testIdentifier.isTest, testExecutionResult.status)
-
-    override fun testPlanExecutionFinished(testPlan: TestPlan) =
-        setGreencentlyStatus(testPlan)
-
-    private fun accumulateResultsOfEachTest(isTest: Boolean, testExecutionResultStatus: Status) {
-        if (!isTest) return
-
-        if (testExecutionResultStatus == SUCCESSFUL) {
-            greenTestCount++
-        } else {
-            redTestCount++
+    override fun executionFinished(id: TestIdentifier, result: TestExecutionResult) {
+        if (id.isTest) {
+            incrementGreenOrRedCount(result.status == SUCCESSFUL)
         }
     }
 
-    private fun setGreencentlyStatus(testPlan: TestPlan) {
-        Greencently("junit5").setStatus(JUnit5Summary(testPlan, greenTestCount, redTestCount).isCompleteAndGreen())
+    override fun testPlanExecutionFinished(completedTestPlan: TestPlan) =
+        setGreencentlyStatus(completedTestPlan)
+
+    private fun incrementGreenOrRedCount(succeeded: Boolean) {
+        if (succeeded) {
+            greenCount++
+        } else {
+            redCount++
+        }
     }
+
+    private fun setGreencentlyStatus(completedTestPlan: TestPlan) =
+        Greencently("junit5").writeStatus(JUnit5Results(completedTestPlan, greenCount, redCount).areCompleteAndGreen())
 }

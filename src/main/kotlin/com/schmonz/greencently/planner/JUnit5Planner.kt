@@ -5,11 +5,21 @@ import org.junit.platform.engine.discovery.DiscoverySelectors
 import org.junit.platform.launcher.TestPlan
 import org.junit.platform.launcher.core.LauncherDiscoveryRequestBuilder
 import org.junit.platform.launcher.core.LauncherFactory
-import java.nio.file.Path
 import java.nio.file.Paths
 
-class JUnit5Planner(testClasspath: Path?, private val testClassesMatching: String = ".*") {
-    private val testClasspath = testClasspath ?: discoverTestClasspath()
+class JUnit5Planner(private val testClassesMatching: String = ".*") {
+    private val testClasspath = discoverTestClasspath()
+
+    fun prepareTestPlan(): TestPlan =
+        LauncherFactory
+            .create()
+            .discover(
+                LauncherDiscoveryRequestBuilder
+                    .request()
+                    .selectors(DiscoverySelectors.selectClasspathRoots(setOf(testClasspath)))
+                    .filters(ClassNameFilter.includeClassNamePatterns(testClassesMatching))
+                    .build()
+            )
 
     private fun discoverTestClasspath() =
         Paths.get(
@@ -26,15 +36,4 @@ class JUnit5Planner(testClasspath: Path?, private val testClassesMatching: Strin
 
     private fun isGradleOutputClasspath(path: String) =
         path.endsWith("/test")
-
-    fun prepareTestPlan(): TestPlan =
-        LauncherFactory
-            .create()
-            .discover(
-                LauncherDiscoveryRequestBuilder
-                    .request()
-                    .selectors(DiscoverySelectors.selectClasspathRoots(setOf(testClasspath)))
-                    .filters(ClassNameFilter.includeClassNamePatterns(testClassesMatching))
-                    .build()
-            )
 }

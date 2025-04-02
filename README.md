@@ -23,6 +23,7 @@ We can fix this.
 ## Setup for JUnit 5
 
 1. Update `build.gradle.kts`:
+
 ```gradle.kts
 dependencies {
     testRuntimeOnly("com.schmonz:junit-greencently:CHECK_ABOVE_FOR_VERSION")
@@ -31,23 +32,29 @@ tasks.withType<Test> {
     maxParallelForks = 1  // see issue #4
 }
 ```
-2. Run all tests in project
-3. If green, observe top-level timestamp file `.greencently-junit5`
-4. Append to top-level `.gitignore`: `*greencently*`
-5. Observe `git status` _not_ showing timestamp file
-6. In pre-commit hook, inspect file modification time. Example:
+
+2. Run all tests in your project
+3. If green, see that `.greencently/junit5` exists (and it's already `.gitignore`'d)
+4. Run only one test, or only some tests, or all tests where at least one of them is red
+5. See that `.greencently/junit5` no longer exists
+6. From now on, whenever you've just run tests, all of them, and they're all green,
+   the pre-commit hook can decide not to run them again. Example:
+
 ```sh
 #!/bin/sh
-TIMESTAMP_FILE=.greencently-junit5
+
+ACCEPTABLY_LARGE_NUMBER_OF_SECONDS_AGO=30
+
 greencently() {
     too_many_seconds_ago=$1
-    thenstamp=$(date -r ${TIMESTAMP_FILE} '+%s' 2>/dev/null || echo 0)
+    thenstamp=$(date -r .greencently/junit5 '+%s' 2>/dev/null || echo 0)
     nowstamp=$(date '+%s')
     secondsago=$(expr ${nowstamp} - ${thenstamp})
     [ ${secondsago} -lt ${too_many_seconds_ago} ]
 }
-if greencently 30; then
-    ./gradlew clean build -x test
+
+if greencently ${ACCEPTABLY_LARGE_NUMBER_OF_SECONDS_AGO}; then
+    ./gradlew clean build --exclude-task test
 else
     ./gradlew clean build
 fi
