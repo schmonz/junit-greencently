@@ -1,6 +1,6 @@
 package com.schmonz.greencently.listener
 
-import com.schmonz.greencently.Timestamp
+import com.schmonz.greencently.Greencently
 import com.schmonz.greencently.summary.JUnit5Summary
 import org.junit.platform.engine.TestExecutionResult
 import org.junit.platform.engine.TestExecutionResult.Status
@@ -17,7 +17,7 @@ class JUnit5Listener : TestExecutionListener {
         accumulateResultsOfEachTest(testIdentifier.isTest, testExecutionResult.status)
 
     override fun testPlanExecutionFinished(testPlan: TestPlan) =
-        updateTimestampIfAndOnlyIfAllTestsPass(testPlan)
+        setGreencentlyStatus(testPlan)
 
     private fun accumulateResultsOfEachTest(isTest: Boolean, testExecutionResultStatus: Status) {
         if (!isTest) return
@@ -29,8 +29,7 @@ class JUnit5Listener : TestExecutionListener {
         }
     }
 
-    private fun updateTimestampIfAndOnlyIfAllTestsPass(testPlan: TestPlan) {
-        val actual = JUnit5Summary(testPlan, greenTestCount, redTestCount)
-        if (actual.isRunCompleteAndGreen()) Timestamp("junit5").setToNow()
+    private fun setGreencentlyStatus(testPlan: TestPlan) {
+        Greencently("junit5").setStatus(JUnit5Summary(testPlan, greenTestCount, redTestCount).isCompleteAndGreen())
     }
 }

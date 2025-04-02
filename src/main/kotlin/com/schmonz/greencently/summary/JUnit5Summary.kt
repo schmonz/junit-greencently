@@ -9,7 +9,7 @@ class JUnit5Summary(completedTestPlan: TestPlan, internal val greenCount: Long, 
 
     private fun countTestsInPlan(testPlan: TestPlan): Long = testPlan.countTestIdentifiers(TestIdentifier::isTest)
 
-    fun isRunCompleteAndGreen(): Boolean {
+    fun isCompleteAndGreen(): Boolean {
         val expectedCount = countTestsInPlan(JUnit5Planner(null).prepareTestPlan())
 
         val greencently = redCount == 0L && 0 < greenCount && actualCount == expectedCount

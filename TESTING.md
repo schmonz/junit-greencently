@@ -1,6 +1,6 @@
 # Testing
 
-- [ ] `./gradlew -PskipSigning -Pversion=99.99.99-SNAPSHOT clean detekt classes testClasses check assemble publishToMavenLocal`
+- [ ] `./gradlew -PskipSigning clean detekt classes testClasses check assemble publishToMavenLocal`
   - (When `.github/main-build.yml` changes, sync to here)
 - [ ] In the IDE, open "Kotlin" portion of GildedRose-Refactoring-Kata
 - [ ] Make sure that project's `build.gradle.kts` contains:
@@ -10,10 +10,15 @@ repositories {
 }
 
 dependencies {
-	testRuntimeOnly("com.schmonz:junit-greencently:99.99.99-SNAPSHOT")
+	testRuntimeOnly("com.schmonz:junit-greencently:local")
 }
 ```
 - [ ] Test other project
-  - [ ] Run with a red, expect file not created or updated
-  - [ ] Run only one test green, expect file not created or update
-  - [ ] Run all tests green, expect file yes created or updated
+  - [ ] Run all tests with a red, expect file not exists
+  - [ ] Run all tests green, expect file exists
+    - `date -r .greencently-junit5`
+  - [ ] Run all tests green, expect file modtime updated
+    - `date -r .greencently-junit5`
+  - [ ] Run one test green, expect file not exists
+  - [ ] Run all tests green, expect file exists
+  - [ ] Run all tests with a red, expect file not exists
