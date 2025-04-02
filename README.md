@@ -38,9 +38,10 @@ tasks.withType<Test> {
 6. In pre-commit hook, inspect file modification time. Example:
 ```sh
 #!/bin/sh
+TIMESTAMP_FILE=.greencently-junit5
 greencently() {
     too_many_seconds_ago=$1
-    thenstamp=$(date -r .greencently-junit5 '+%s' 2>/dev/null || echo 0)
+    thenstamp=$(date -r ${TIMESTAMP_FILE} '+%s' 2>/dev/null || echo 0)
     nowstamp=$(date '+%s')
     secondsago=$(expr ${nowstamp} - ${thenstamp})
     [ ${secondsago} -lt ${too_many_seconds_ago} ]
