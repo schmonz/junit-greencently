@@ -1,26 +1,36 @@
 # Testing
 
-- [ ] `./gradlew -PskipSigning clean detekt classes testClasses check assemble publishToMavenLocal`
-    - (When `.github/main-build.yml` changes, sync to here)
-- [ ] In the IDE, open "Kotlin" portion of GildedRose-Refactoring-Kata
-- [ ] Make sure that project's `build.gradle.kts` contains:
+## 1. Build just like GitHub Actions (sans signing)
 
+```shell
+:; ./gradlew -PskipSigning clean detekt classes testClasses check assemble publishToMavenLocal
 ```
+
+(Keep in sync with [main-build.yml](.github/workflows/main-build.yml).)
+
+## 2. Use from a JDK 1.8 project
+
+Its `build.gradle.kts` needs:
+
+```kotlin
 repositories {
-	mavenLocal();
+    mavenLocal()
 }
 
 dependencies {
-	testRuntimeOnly("com.schmonz:junit-greencently:local")
+    testRuntimeOnly("com.schmonz:junit-greencently:local")
 }
 ```
 
-- [ ] Test other project
-    - [ ] Run all tests with a red, expect file not exists
-    - [ ] Run all tests green, expect file exists
-        - `date -r .greencently/junit5`
-    - [ ] Run all tests green, expect file modtime updated
-        - `date -r .greencently/junit5`
-    - [ ] Run one test green, expect file not exists
-    - [ ] Run all tests green, expect file exists
-    - [ ] Run all tests with a red, expect file not exists
+## 3. Run that project's tests a few ways
+
+```shell
+alias stamp="date -r .greencently/junit5 '+%s' 2>/dev/null || echo 0"
+```
+
+- [ ] Run all tests with a red, expect `stamp` == 0
+- [ ] Run all tests green; expect `stamp` > 0
+- [ ] Run all tests green; expect `stamp` > 0 by a bit more
+- [ ] Run one test green; expect `stamp` == 0
+- [ ] Run all tests green; expect `stamp` > 0
+- [ ] Run all tests with a red; expect `stamp` == 0
