@@ -7,15 +7,9 @@ class TestListenerDelegate {
     private var greenCount = 0L
     private var redCount = 0L
 
-    fun onExecutionFinished(isTest: Boolean, isSuccessful: Boolean) =
-        incrementGreenOrRedCount(isTest, isSuccessful)
-
-    fun onTestPlanExecutionFinished(expectedCount: Long, totalCount: Long) =
-        setGreencentlyStatus(expectedCount, totalCount)
-
-    private fun incrementGreenOrRedCount(isTest: Boolean, succeeded: Boolean) {
+    fun incrementGreenOrRedCount(isTest: Boolean, isSuccessful: Boolean) {
         if (isTest) {
-            if (succeeded) {
+            if (isSuccessful) {
                 greenCount++
             } else {
                 redCount++
@@ -23,7 +17,7 @@ class TestListenerDelegate {
         }
     }
 
-    private fun setGreencentlyStatus(totalCount: Long, expectedCount: Long) {
+    fun setGreencentlyStatus(expectedCount: Long, totalCount: Long) {
         val results = TestResults(
             expectedCount,
             totalCount,

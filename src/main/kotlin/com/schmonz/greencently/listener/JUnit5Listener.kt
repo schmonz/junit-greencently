@@ -10,17 +10,17 @@ class JUnit5Listener : TestExecutionListener {
     private val delegate = TestListenerDelegate()
 
     override fun executionFinished(id: TestIdentifier, result: TestExecutionResult) =
-        delegate.onExecutionFinished(
+        delegate.incrementGreenOrRedCount(
             id.isTest,
             result.status == TestExecutionResult.Status.SUCCESSFUL,
         )
 
     override fun testPlanExecutionFinished(completedTestPlan: TestPlan) =
-        delegate.onTestPlanExecutionFinished(
+        delegate.setGreencentlyStatus(
             countTests(JUnit5Planner().prepareTestPlan()),
             countTests(completedTestPlan),
         )
 
-    private fun countTests(testPlan: TestPlan): Long =
+    private fun countTests(testPlan: TestPlan) =
         testPlan.countTestIdentifiers(TestIdentifier::isTest)
 }
