@@ -17,13 +17,13 @@ class TestListenerDelegate {
         }
     }
 
-    fun setGreencentlyStatus(expectedCount: Long, totalCount: Long) {
-        val results = TestResults(
-            expectedCount,
-            totalCount,
-            greenCount,
-            redCount,
+    fun setGreencentlyStatus(expectedCount: Long, totalCount: Long) =
+        Greencently("junit5").writeStatus(
+            TestResults(
+                expectedCount,
+                totalCount,
+                greenCount,
+                redCount,
+            ).areCompleteAndGreen()
         )
-        Greencently("junit5").writeStatus(results.areCompleteAndGreen())
-    }
 }
