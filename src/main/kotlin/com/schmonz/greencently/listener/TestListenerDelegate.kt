@@ -17,8 +17,8 @@ class TestListenerDelegate {
         }
     }
 
-    fun setGreencentlyStatus(expectedCount: Long, totalCount: Long) =
-        Greencently("junit5").writeStatus(
+    fun setGreencentlyStatus(accordingTo: String, expectedCount: Long, totalCount: Long) =
+        Greencently(accordingTo).writeStatus(
             TestResults(
                 expectedCount,
                 totalCount,
