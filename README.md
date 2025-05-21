@@ -1,5 +1,5 @@
 [![Build status](https://github.com/schmonz/greencently/actions/workflows/main-build.yml/badge.svg)](https://github.com/schmonz/greencently/actions/workflows/main-build.yml)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.schmonz/greencently/badge.svg?gav=true)](https://central.sonatype.com/artifact/com.schmonz/greencently)
+[![Sonatype Central](https://maven-badges.sml.io/sonatype-central/com.schmonz/greencently/badge.svg?style=flat&gav=true)](https://central.sonatype.com/artifact/com.schmonz/greencently)
 
 # Greencently
 
