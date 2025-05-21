@@ -1,1 +1,1 @@
-rootProject.name = "junit-greencently"
+rootProject.name = "greencently"

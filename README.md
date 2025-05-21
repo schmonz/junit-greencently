@@ -1,5 +1,5 @@
-[![Build status](https://github.com/schmonz/junit-greencently/actions/workflows/main-build.yml/badge.svg)](https://github.com/schmonz/junit-greencently/actions/workflows/main-build.yml)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.schmonz/junit-greencently/badge.svg?gav=true)](https://central.sonatype.com/artifact/com.schmonz/junit-greencently)
+[![Build status](https://github.com/schmonz/greencently/actions/workflows/main-build.yml/badge.svg)](https://github.com/schmonz/greencently/actions/workflows/main-build.yml)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.schmonz/greencently/badge.svg?gav=true)](https://central.sonatype.com/artifact/com.schmonz/greencently)
 
 # Greencently
 
@@ -26,7 +26,7 @@ We can fix this.
 
 ```gradle.kts
 dependencies {
-    testRuntimeOnly("com.schmonz:junit-greencently:CHECK_ABOVE_FOR_VERSION")
+    testRuntimeOnly("com.schmonz:greencently:CHECK_ABOVE_FOR_VERSION")
 }
 tasks.withType<Test> {
     maxParallelForks = 1  // see issue #4

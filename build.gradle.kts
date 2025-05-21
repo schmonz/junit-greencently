@@ -102,9 +102,9 @@ publishing {
                     }
                 }
                 scm {
-                    connection.set("scm:git:git@github.com:schmonz/junit-greencently.git")
-                    developerConnection.set("scm:git:git@github.com:schmonz/junit-greencently.git")
-                    url.set("https://github.com/schmonz/junit-greencently.git")
+                    connection.set("scm:git:git@github.com:schmonz/greencently.git")
+                    developerConnection.set("scm:git:git@github.com:schmonz/greencently.git")
+                    url.set("https://github.com/schmonz/greencently.git")
                 }
             }
         }
