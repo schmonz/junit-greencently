@@ -19,7 +19,7 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
-    testRuntimeOnly("com.schmonz:greencently:local")
+    testRuntimeOnly("com.schmonz:junit-greencently:local")
 }
 
 tasks.withType<JavaCompile>().configureEach {

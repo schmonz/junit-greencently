@@ -3,7 +3,7 @@
 set -e
 
 stamp() {
-	date -r .greencently/junit5 '+%s' 2>/dev/null || echo 0
+	date -r DEPRECATION-NOTICE.md '+%s' 2>/dev/null || echo 0
 }
 
 scenario_count=0

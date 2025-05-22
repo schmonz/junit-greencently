@@ -17,7 +17,7 @@ class JUnit5Listener : TestExecutionListener {
 
     override fun testPlanExecutionFinished(completedTestPlan: TestPlan) =
         delegate.setGreencentlyStatus(
-            "junit5",
+            "DEPRECATION-NOTICE.md",
             countTests(JUnit5Planner().prepareTestPlan()),
             countTests(completedTestPlan),
         )
